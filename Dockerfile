@@ -5,11 +5,11 @@ RUN \
  echo "**** install packages ****" && \
  apk add --no-cache \
 	curl && \
- echo "**** grab rclone ****" && \
+ echo "**** grab mp4.sh ****" && \
  mkdir -p /root-layer && \
  curl -o \
-	/root-layer/rclone.deb -L \
-	"https://downloads.rclone.org/v1.47.0/rclone-v1.47.0-linux-amd64.deb"
+	/root-layer/mp4.sh -L \
+	"https://raw.githubusercontent.com/Digiex/M4V-Converter/master/mp4.sh"
 
 # copy local files
 COPY root/ /root-layer/
@@ -17,7 +17,7 @@ COPY root/ /root-layer/
 ## Single layer deployed image ##
 FROM scratch
 
-LABEL maintainer="username"
+LABEL maintainer="xzKinGzxBuRnzx"
 
 # Add files from buildstage
 COPY --from=buildstage /root-layer/ /
